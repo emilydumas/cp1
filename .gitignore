@@ -1,0 +1,52 @@
+# Compiled python modules.
+*.py[cod]
+
+# Binaries not for distribution (should be built on target)
+*.o
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Setuptools distribution folder.
+/dist/
+/build/
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Non-library development stuff
+/old/
+/work/
+
+# Backup and temp
+*~
+*.orig
+*.lock
+*.DS_Store
+*.swp
+*.out
+*.tmp
+tags
+TAGS
+\#*#

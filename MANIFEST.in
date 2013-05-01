@@ -1,0 +1,6 @@
+include README.rst
+include cp1/pcint.c
+include cp1/bowditch.c
+include cp1/test/*.py
+include examples/*.py
+include util/*.py
