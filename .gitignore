@@ -39,6 +39,10 @@ nosetests.xml
 /old/
 /work/
 
+# Cython generated code
+/cp1/pcint.c
+/cp1/bowditch.c
+
 # Backup and temp
 *~
 *.orig
