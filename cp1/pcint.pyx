@@ -102,11 +102,11 @@ cdef class pcint:
         self.sys.params = &self.P
     
     def __dealloc__(self):
-        if self.step is not NULL:
+        if self.step != NULL:
             gsl_odeiv_step_free(self.step)
-        if self.control is not NULL:
+        if self.control != NULL:
             gsl_odeiv_control_free(self.control)
-        if self.evolve is not NULL:
+        if self.evolve != NULL:
             gsl_odeiv_evolve_free(self.evolve)
 
     def seg_int(self, L, C, p0, p1, init=None, maxstep=None):
@@ -119,7 +119,7 @@ cdef class pcint:
         t = 0.0
         h = self.initstep
 
-        if init is None:
+        if init == None:
             make_eye(y)
         else:
             y[0] = init[0][0].real
@@ -132,7 +132,7 @@ cdef class pcint:
             y[7] = init[1][1].imag
 
         cdef int MS
-        if maxstep is None:
+        if maxstep == None:
             MS = self.maxstep
         else:
             MS = maxstep
@@ -148,12 +148,12 @@ cdef class pcint:
                                             &self.sys,
                                             &t, 1.0, &h, y)
 
-            if (status is not GSL_SUCCESS):
+            if (status != GSL_SUCCESS):
                 break
 
             n = n + 1
 
-        if (n is MS) or (status is not GSL_SUCCESS):
+        if (n == MS) or (status != GSL_SUCCESS):
             return None
 
         return [ [ y[0] + 1j*y[1], y[2] + 1j*y[3] ],

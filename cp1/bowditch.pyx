@@ -74,7 +74,7 @@ cdef rep_type mtdiscreterec (gsl_complex x, gsl_complex y, gsl_complex z, int *n
     if (gsl_complex_abs(x) + gsl_complex_abs(y) + gsl_complex_abs(z)) > HUGE_TRACE:
         return cREP_UNCERTAIN
 
-    if nodecount is not NULL:
+    if nodecount != NULL:
         nodecount[0] = nodecount[0] + 1
 
     # For each direction not yet explored, call mtdiscreterec to
@@ -86,15 +86,15 @@ cdef rep_type mtdiscreterec (gsl_complex x, gsl_complex y, gsl_complex z, int *n
 
     if edge_in_tree(x,z):
         r1 = mtdiscreterec (gsl_complex_sub(gsl_complex_mul(x, z), y), z, x,nodecount,depth+1)
-        if r1 is cREP_INDISCRETE:
+        if r1 == cREP_INDISCRETE:
             return r1
 
     if edge_in_tree(x,y):
         r2 = mtdiscreterec(gsl_complex_sub(gsl_complex_mul(x, y), z), x, y,nodecount,depth+1)
-        if r2 is cREP_INDISCRETE:
+        if r2 == cREP_INDISCRETE:
             return r2
 
-    if (r1 is cREP_UNCERTAIN) or (r2 is cREP_UNCERTAIN):
+    if (r1 == cREP_UNCERTAIN) or (r2 == cREP_UNCERTAIN):
         # Were undecided before, and no certificate of indiscreteness found later.
         return cREP_UNCERTAIN
 
@@ -117,7 +117,7 @@ cdef rep_type mtdiscrete(gsl_complex x, gsl_complex y, gsl_complex z, int *nodec
     cdef int n = 0
     cdef int sink = 0
 
-    if nodecount is not NULL:
+    if nodecount != NULL:
         nodecount[0] = 0
 
     # ----------------------------------------------------------------------
@@ -138,7 +138,7 @@ cdef rep_type mtdiscrete(gsl_complex x, gsl_complex y, gsl_complex z, int *nodec
         y = z
         z = t
 
-    if nodecount is not NULL:
+    if nodecount != NULL:
         nodecount[0] = nodecount[0] + n
 
     if gsl_complex_abs(w) < JORGENSEN_THRESHOLD:
@@ -171,20 +171,20 @@ cdef rep_type mtdiscrete(gsl_complex x, gsl_complex y, gsl_complex z, int *nodec
 
     if edge_in_tree(x,y):
         r1 = mtdiscreterec(gsl_complex_sub(gsl_complex_mul(x, y), z), x, y, nodecount, 1)
-        if r1 is cREP_INDISCRETE:
+        if r1 == cREP_INDISCRETE:
             return r1
 
     if edge_in_tree(x,z):
         r2 = mtdiscreterec(gsl_complex_sub(gsl_complex_mul(x, z), y), z, x, nodecount, 1)
-        if r2 is cREP_INDISCRETE:
+        if r2 == cREP_INDISCRETE:
             return r2
 
     if edge_in_tree(y,z):
         r3 = mtdiscreterec (gsl_complex_sub(gsl_complex_mul(y, z), x), y, z, nodecount, 1)
-        if r3 is cREP_INDISCRETE:
+        if r3 == cREP_INDISCRETE:
             return r3
 
-    if (r1 is cREP_UNCERTAIN) or (r2 is cREP_UNCERTAIN) or (r3 is cREP_UNCERTAIN):
+    if (r1 == cREP_UNCERTAIN) or (r2 == cREP_UNCERTAIN) or (r3 == cREP_UNCERTAIN):
         return cREP_UNCERTAIN
     
     return cREP_DISCRETE
