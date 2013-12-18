@@ -1,3 +1,4 @@
+'''Holonomy of projective structures on a four-punctured sphere'''
 from pcint import pcint, modularlambda
 from numpy import trace
 from itertools import izip

@@ -1,3 +1,4 @@
+'''Holonomy of projective structures on a punctured torus'''
 import s04
 from numpy import trace
 from cmath import sqrt

@@ -1,3 +1,5 @@
+'''Integrate a projective connection on a four-punctured sphere'''
+
 from gsl_complex cimport *
 from gsl_odeiv cimport *
 

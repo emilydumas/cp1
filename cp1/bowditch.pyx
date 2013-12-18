@@ -1,3 +1,4 @@
+'''Bowdtich/Jorgensen discreteness test for punctured torus groups'''
 #cython: cdivision=True
 
 from gsl_complex cimport *
