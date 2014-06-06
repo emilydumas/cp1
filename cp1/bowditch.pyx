@@ -192,6 +192,20 @@ cdef rep_type mtdiscrete(gsl_complex x, gsl_complex y, gsl_complex z, int *nodec
 
 
 def classify(*args):
+    '''Classify a representation as discrete, indiscrete, or undecided
+    using Bowditch+Jorgensen test.
+
+    x,y,z --- Markov triple representing tr(a), tr(b), tr(ab) for
+    generators (a,b) of a punctured torus group.
+
+    The arguments must correspond to a type-preserving representation
+    where tr([a,b]) = -2.  Equivalently x,y,z must satisfy:
+
+    x**2 + y**2 + z**2 == x*y*z
+
+    Returns REP_DISCRETE, REP_INDISCRETE, or REP_UNCERTAIN
+    '''
+
     try:
         x,y,z = [ complex(t) for t in args ]
     except TypeError:
