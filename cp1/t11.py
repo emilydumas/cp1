@@ -1,5 +1,5 @@
 '''Holonomy of projective structures on a punctured torus'''
-import s04
+import cp1.s04 as s04
 from numpy import trace
 from cmath import sqrt
 

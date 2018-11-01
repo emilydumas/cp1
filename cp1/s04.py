@@ -1,10 +1,14 @@
 '''Holonomy of projective structures on a four-punctured sphere'''
-from pcint import pcint, modularlambda
+from cp1.pcint import pcint, modularlambda
+import cp1.contourgen as contourgen
 from numpy import trace
-from itertools import izip
 from math import floor
 
-import contourgen
+# izip was renamed to zip in python3
+try:
+    from itertools import izip as zip
+except ImportError:
+    pass
 
 # Convention: L = lambda = 4-punctured sphere cross ratio parameter
 #             C = quadratic differential parameter
@@ -41,7 +45,7 @@ class S04(object):
         if close:
             vertlist.append(vertlist[0])
         m = [[1.0+0j,0.0j],[0.0j,1.0+0j]]
-        for p0,p1 in izip(vertlist[:-1],vertlist[1:]):
+        for p0,p1 in zip(vertlist[:-1],vertlist[1:]):
             m = self._pcint.seg_int(self.L,C,p0,p1,init=m)
             if m is None:
                 raise HolonomyException('Integration failed, p0=%s, p1=%s, L=%s, C=%s, fd=%s' % (p0,p1,self.L,C,self.fd))

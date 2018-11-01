@@ -70,7 +70,7 @@ def readme():
 
 setup(
     name = 'cp1',
-    version = '0.0.1dev',
+    version = '0.0.2',
     description = 'CP1: Complex projective structures toolkit',
     long_description = readme(),
     author = 'David Dumas',
@@ -78,10 +78,11 @@ setup(
     url='http://github.com/daviddumas/cp1',
     license='GPLv3',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+	'Development Status :: 4 - Beta',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Programming Language :: Python :: 2.7',
+	'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering :: Mathematics'
         ],
     cmdclass = cmdclass,

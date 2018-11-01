@@ -7,7 +7,7 @@ Introduction
 
 :Author: David Dumas (david@dumas.io, http://dumas.io/)
 :Web site: http://github.com/daviddumas/cp1
-:Version: 0.0.1dev
+:Version: 0.0.2
 :License: CP1 is released under the GNU General Public License v3 (http://www.gnu.org/licenses/gpl-3.0.txt)
 
 Purpose
@@ -25,8 +25,7 @@ these functions in Python programs.
 Development status
 ==================
 
-This is pre-alpha code.  Initial development is still underway.  No
-part of the API should be considered stable.
+This is beta code.
 
 
 Installation
@@ -35,7 +34,7 @@ Installation
 Dependencies
 ------------
 
-* Python 2.6+
+* Python 3.6+ or 2.6+
 * Numpy (http://www.numpy.org/)
 * GCC
 * GSL, the GNU Scientific Library (http://www.gnu.org/software/gsl)
