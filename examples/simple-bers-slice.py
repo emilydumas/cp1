@@ -1,6 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 '''Draw ascii art picture of square torus Bers embedding'''
 
+from __future__ import print_function
 import os,sys
 
 # Support module built in-place (in ../cp1) or system-wide
@@ -30,13 +31,14 @@ for j in range(ysize):
         C = C0 + tx*radius + 1j*ty*radius
         mt = t11_lambda_hol(L=0.5, C=C)
         d, n = classify(mt)
-        if d is REP_DISCRETE:
-            print '*',
-        elif d is REP_INDISCRETE:
-            print ' ',
+        if d == REP_DISCRETE:
+            print('*',end='')
+        elif d == REP_INDISCRETE:
+            print(' ',end='')
         else:
-            print '!',
-    print ''
+            print('?',end='')
+    print('')
+
 
         
         

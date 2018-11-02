@@ -1,7 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 '''Create bitmap image of an extended Bers slice showing discrete and non-discrete holonomy.'''
 
+from __future__ import print_function
 import os
 import sys
 
@@ -51,19 +52,19 @@ args = parser.parse_args()
 
 if args.output is None:
     from time import time
-    args.output = 'bs%d.png' % long(time())
-    print 'Using output filename "%s"' % args.output
+    args.output = 'bs%d.png' % int(time())
+    print('Using output filename "%s"' % args.output)
 
 img = Image.new('RGB',(args.size, args.size + 70), (255,255,255))
 
 L = modularlambda(args.tau)
 
 # Say what we are doing
-print 'Creating %dx%d Bers slice image:' % (args.size,args.size)
-print '\ttau = %s' % cplx_pp(args.tau)
-print '\tlambda = %s' % cplx_pp(L)
-print '\tcenter = %s' % cplx_pp(args.center)
-print '\tradius = %g' % args.radius
+print('Creating %dx%d Bers slice image:' % (args.size,args.size))
+print('\ttau = %s' % cplx_pp(args.tau))
+print('\tlambda = %s' % cplx_pp(L))
+print('\tcenter = %s' % cplx_pp(args.center))
+print('\tradius = %g' % args.radius)
 
 # Prepare the label text
 lines = []
@@ -85,7 +86,7 @@ d.rectangle( [(0,0),(args.size-1,args.size-1)], fill=(180,180,180) )
 pix = img.load()
 try:
     for j in range(args.size):
-        print 'Row %d of %d' % (j+1,args.size)
+        print('Row %d of %d' % (j+1,args.size))
         for i in range(args.size):
             tx = 2.0*(float(i)/(args.size-1)) - 1.0
             ty = 1.0 - 2.0*(float(j)/(args.size-1))
@@ -105,11 +106,11 @@ try:
             except HolonomyException:
                 pix[i,j] = (0,255,0)
 except KeyboardInterrupt:
-    print 'Interrupted: Will try to write partial progress to file.'
+    print('Interrupted: Will try to write partial progress to file.')
     pass
 
 # Write to a file
-print 'Writing "%s"' % args.output
+print('Writing "%s"' % args.output)
 img.save(args.output)
 
         

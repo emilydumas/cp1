@@ -155,10 +155,10 @@ def s04_tau_hol(tau=1.0j,C=0.0,**kwargs):
         if a == 0:
             x,y,z = y,x,8-x*y-z
         elif a > 0:
-            for i in xrange(a):
+            for i in range(a):
                 x,y,z = x,8-x*y-z,y
         else:
-            for i in xrange(-a):
+            for i in range(-a):
                 x,y,z = x,z,8-x*z-y
     # Done.
     return x,y,z
